@@ -1,0 +1,5 @@
+.vscode
+*.hevc
+OIDv4_ToolKit
+**/__pycache__
+comma2k19
