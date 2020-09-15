@@ -4,7 +4,7 @@ Efficient Lane and Path Detection Learning Model and Architecture for Autonomous
 <div align="center">
       <a href="">
      <img 
-      src="https://https://github.com/iXcess/driving_model/tree/master/assets/demo.jpg" 
+      src="https://github.com/iXcess/driving_model/blob/master/assets/demo.jpg" 
       alt="Demo" 
       style="width:100%;">
       </a>
@@ -19,25 +19,25 @@ This research is done based on supercombo model commit [83112b47-3b23-48e4-b65b-
 <div align="center">
       <a href="">
      <img 
-      src="https://https://github.com/iXcess/driving_model/tree/master/assets/model_summary1.jpg" 
+      src="https://github.com/iXcess/driving_model/blob/master/assets/model_summary1.jpg" 
       alt="Model Summary" 
       style="width:100%;">
       </a>
       <a href="">
      <img 
-      src="https://https://github.com/iXcess/driving_model/tree/master/assets/model_summary2.jpg" 
+      src="https://github.com/iXcess/driving_model/blob/master/assets/model_summary2.jpg" 
       alt="Model Summary" 
       style="width:100%;">
       </a>
       <a href="">
      <img 
-      src="https://https://github.com/iXcess/driving_model/tree/master/assets/model_summary3.jpg" 
+      src="https://github.com/iXcess/driving_model/blob/master/assets/model_summary3.jpg" 
       alt="Model Summary" 
       style="width:100%;">
       </a>
       <a href="">
      <img 
-      src="https://https://github.com/iXcess/driving_model/tree/master/assets/model_summary4.jpg" 
+      src="https://github.com/iXcess/driving_model/blob/master/assets/model_summary4.jpg" 
       alt="Model Summary" 
       style="width:100%;">
       </a>
@@ -66,13 +66,13 @@ The output of the model has 10 outputs
 <div align="center">
       <a href="">
      <img 
-      src="https://https://github.com/iXcess/driving_model/tree/master/assets/graph_out1.jpg" 
+      src="https://github.com/iXcess/driving_model/blob/master/assets/graph_out1.jpg" 
       alt="Model Graph" 
       style="width:100%;">
       </a>
       <a href="">
      <img 
-      src="https://https://github.com/iXcess/driving_model/tree/master/assets/graph_out2.jpg" 
+      src="https://github.com/iXcess/driving_model/blob/master/assets/graph_out2.jpg" 
       alt="Model Graph" 
       style="width:100%;">
       </a>
