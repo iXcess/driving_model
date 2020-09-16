@@ -1,14 +1,5 @@
-Efficient Lane and Path Detection Learning Model and Architecture for Autonomous Vehicle 
+## Efficient Lane and Path Detection Learning Model and Architecture for Autonomous Vehicle 
 =====================================
-## Demo
-<div align="center">
-      <a href="">
-     <img 
-      src="https://github.com/iXcess/driving_model/blob/master/assets/demo.jpg" 
-      alt="Demo" 
-      style="width:100%;">
-      </a>
-</div>
 
 ## The Model
 
@@ -76,24 +67,29 @@ The output of the model has 11 outputs
      <img 
       src="https://github.com/iXcess/driving_model/blob/master/assets/graph_out1.jpg" 
       alt="Model Graph" 
-      style="width:100%;">
+      style="width:100%;margin-top: 100px;">
       </a>
       <a href="">
      <img 
       src="https://github.com/iXcess/driving_model/blob/master/assets/graph_out2.jpg" 
       alt="Model Graph" 
-      style="width:100%;">
+      style="width:80%;margin-top: 100px;">
       </a>
 </div>
 
+## Objective 1: To Design a Universal Learning Model for Autonomous Vehicle Applications.
+
+Under this objective, the designed model must be able to produce high accuracy in lane feature extraction. The model must then be able to do transfer learning to other critical tasks such as lead vehicle state vector estimation and driver's state monitoring. The model must include a recurrent unit.
+
 #### EfficientNet
+The comparison of EfficientNet and other state of the other models are shown below:
 
 <div align="center">
       <a href="">
      <img 
       src="https://github.com/iXcess/driving_model/blob/master/assets/efficientnet_graph.jpg" 
       alt="EfficientNet graph" 
-      style="width:100%;">
+      style="width:60%;margin: 50px;">
       </a>
 </div>
 
@@ -122,7 +118,8 @@ python3 dynamic_lane.py <path-to-sample-hevc>
 ## To-do
 
 - Update the requirements.txt
-- Write about the findings
+- Train a simple model which can do path prediction, driver monitoring and lead car state vector estimation.
+- path_predict_simple_efficientnet. Input : 
 
 
 ## Related Research
