@@ -43,12 +43,19 @@ This research is done based on supercombo model commit [83112b47-3b23-48e4-b65b-
       </a>
 </div>
 
+#### Inputs
 The model has 4 inputs.
 1. Size (12,128,256) image
 2. One hot coding input of length 8
 3. rnn_state or the vehicle state from openpilot of length 512
 4. traffic_convention of length 2
 
+The model image input will first be converted to YUV_I420 from BGR, this will reduce the dimension of the image by 1.
+The image is then transformed from eon_intrinsic frame to medmodel_intrinsic frame, a copy is saved for the recurrent network.
+The output of the transformed image is stacked together to form a (1,12,128,256) tensor.
+
+
+#### Outputs
 The output of the model has 11 outputs
 1. 192 outputs points spaced 1m apart from the car reference frame of the path
 2. 192 left lane points spaced 1m apart from the car reference frame

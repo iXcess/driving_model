@@ -11,9 +11,9 @@ from tools.lib.parser import parser
 import cv2
 import sys
 camerafile = sys.argv[1]
-supercombo = load_model('supercombo.keras')
+supercombo = load_model('supercombo_old.keras')
 
-print(supercombo.summary())
+#print(supercombo.summary())
 
 MAX_DISTANCE = 140.
 LANE_OFFSET = 1.8
@@ -75,10 +75,15 @@ for i in tqdm(range(len(frame_tensors) - 1)):
   new_x_right, new_y_right = transform_points(x_left, parsed["rll"][0])
   new_x_path, new_y_path = transform_points(x_left, parsed["path"][0])
 
+  plt.plot(x_left, parsed["lll"][0], label='transformed', color='w')
+  plt.plot(x_left, parsed["rll"][0], label='transformed', color='w')
+  plt.plot(x_left, parsed["path"][0], label='transformed', color='green')
+
+  """
   plt.plot(new_x_left, new_y_left, label='transformed', color='w')
   plt.plot(new_x_right, new_y_right, label='transformed', color='w')
   plt.plot(new_x_path, new_y_path, label='transformed', color='green')
-
+  """
   plt.pause(0.001)
   if cv2.waitKey(10) & 0xFF == ord('q'):
         break
