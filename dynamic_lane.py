@@ -15,6 +15,7 @@ import sys
 #matplotlib.use('Agg')
 camerafile = sys.argv[1]
 supercombo = load_model('supercombo_old.keras')
+#supercombo = load_model('supercombo.keras')
 
 #print(supercombo.summary())
 
@@ -40,7 +41,7 @@ def frames_to_tensor(frames):
 imgs_med_model = np.zeros((2, 384, 512), dtype=np.uint8)
 state = np.zeros((1,512))
 desire = np.zeros((1,8))
-#traffic_state = np.zeros((1,2))
+traffic_state = np.zeros((1,2))
 
 cap = cv2.VideoCapture(camerafile)
 #cap = cv2.VideoCapture(0)
@@ -63,7 +64,8 @@ while True:
   if not ret:
        break
   frame = current_frame.copy()
-  img_yuv = cv2.cvtColor(current_frame, cv2.COLOR_BGR2YUV_I420)
+  frame = cv2.resize(frame,(1164,874))
+  img_yuv = cv2.cvtColor(frame, cv2.COLOR_BGR2YUV_I420)
   imgs_med_model[1] = transform_img(img_yuv, from_intr=eon_intrinsics, to_intr=medmodel_intrinsics, yuv=True,
                                     output_size=(512,256))
   frame_tensors = frames_to_tensor(np.array(imgs_med_model)).astype(np.float32)/128.0 - 1.0
@@ -77,6 +79,8 @@ while True:
   state = outs[-1]
   pose = outs[-2]   # For 6 DoF Callibration
   frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+  """
   print("frame.shape:")
   print(frame.shape)
   print("img_yuv.shape:")
@@ -87,12 +91,13 @@ while True:
   print(frame_tensors.shape)
   print("np.vstack(frame_tensors[0:2])[None].shape:")
   print(np.vstack(frame_tensors[0:2])[None].shape)
-  plt.imshow(frame)
-
   """
-  new_x_left, new_y_left = transform_points(x_left, parsed["lll"][0])
-  new_x_right, new_y_right = transform_points(x_left, parsed["rll"][0])
-  new_x_path, new_y_path = transform_points(x_left, parsed["path"][0])
+  #plt.imshow(frame)
+
+  
+  #new_x_left, new_y_left = transform_points(x_left, parsed["lll"][0])
+  #new_x_right, new_y_right = transform_points(x_left, parsed["rll"][0])
+  #new_x_path, new_y_path = transform_points(x_left, parsed["path"][0])
   plt.plot(parsed["lll"][0], x_left, label='transformed', color='black')
   plt.plot(parsed["rll"][0], x_left, label='transformed', color='black')
   plt.plot(parsed["path"][0], x_left, label='transformed', color='green')
@@ -100,7 +105,7 @@ while True:
   #plt.plot(new_x_left, new_y_left, label='transformed', color='w')
   #plt.plot(new_x_right, new_y_right, label='transformed', color='w')
   #plt.plot(new_x_path, new_y_path, label='transformed', color='green')
-  """
+  
 
   imgs_med_model[0]=imgs_med_model[1]
   plt.pause(0.001)

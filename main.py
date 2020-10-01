@@ -12,7 +12,7 @@ from tools.lib.parser import parser
 import cv2
 import sys
 camerafile = sys.argv[1]
-supercombo = load_model('supercombo.keras')
+supercombo = load_model('supercombo_old.keras')
 
 MAX_DISTANCE = 140.
 LANE_OFFSET = 1.8
@@ -27,9 +27,11 @@ imgs = []
 
 for i in tqdm(range(1000)):
   ret, frame = cap.read()
+  frame = cv2.resize(frame,(1164,874))
   img_yuv = cv2.cvtColor(frame, cv2.COLOR_BGR2YUV_I420)
-  imgs.append(img_yuv.reshape((874*3//2, 1164)))
- 
+  #imgs.append(img_yuv)
+  #img_yuv = np.reshape(img_yuv, (874, 1164, 4))
+  imgs.append(img_yuv)
 
 def frames_to_tensor(frames):                                                                                               
   H = (frames.shape[1]*2)//3                                                                                                
@@ -71,7 +73,7 @@ for i in tqdm(range(len(frame_tensors) - 1)):
   plt.clf()
   plt.title("lanes and path")
   # lll = left lane line
-  plt.plot(parsed["lll"][0], range(0,192), "b-", linewidth=1)
+  plt.plot(parsed["lll"][0], range(0, 192), "b-", linewidth=1)
   # rll = right lane line
   plt.plot(parsed["rll"][0], range(0, 192), "r-", linewidth=1)
   # path = path cool isn't it ?
@@ -79,6 +81,10 @@ for i in tqdm(range(len(frame_tensors) - 1)):
   #print(np.array(pose[0,:3]).shape)
   #plt.scatter(pose[0,:3], range(3), c="y")
   
+  #lead
+  #plt.plot(parsed["lead_xyva"][0,0], parsed["lead_xyva"][0,1] , "g", linewidth = 10)
+  #print(parsed["lead_xyva"])
+
   # Needed to invert axis because standart left lane is positive and right lane is negative, so we flip the x axis
   plt.gca().invert_xaxis()
   plt.pause(0.001)
