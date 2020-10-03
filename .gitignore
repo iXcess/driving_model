@@ -2,9 +2,10 @@
 *.hevc
 OIDv4_ToolKit
 **/__pycache__
-comma2k19
-malaysia.mp4
-malaysia1.mp4
-road_video.mp4
-generate_path_data.ipynb
-path_training
+depreciated
+logs
+training_data
+validation
+verification_folder
+videos
+*.h5
